@@ -3,18 +3,18 @@ section .data
     a db 5               ; Визначаємо a = 5
     b db 3               ; Визначаємо b = 3
     c db 2               ; Визначаємо c = 2
-    resultMsg db 'Result: $' ; Визначення рядка для виведення результату
+    resultMsg db 'Result: $' ; Рядок для виведення результату
 
 section .text
 _start:
-    mov al, [a]          ; Завантажуємо a в al
-    add al, [b]          ; Додаємо b до al
+    mov al, [b]          ; Завантажуємо b в al
     sub al, [c]          ; Віднімаємо c від al
+    add al, [a]          ; Додаємо a до al
 
     ; Перетворення результату в ASCII символ (для однозначних чисел)
     add al, 30h          ; Перетворюємо число в ASCII символ
 
-    ; Виведення результату
+    ; Виведення повідомлення "Result: "
     mov ah, 09h          ; Функція DOS для виведення рядка
     lea dx, resultMsg    ; Встановлюємо DX на адресу resultMsg
     int 21h              ; Виклик DOS-переривання
